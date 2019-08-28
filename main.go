@@ -18,7 +18,7 @@ func main() {
 
 	// Case 3
 	// if n = 5, we calculate 5 x 4 x 3 x 2 x 1 and get 120
-	fmt.Printf("Case 3: %d\n")
+	fmt.Printf("Case 3: %d\n", factorial(5))
 }
 
 func sumArray(num []int) int {
@@ -51,4 +51,10 @@ func dateConverter(input string) string {
 	return fullDate[3] + "-" + strMonth + "-" + fullDate[1]
 }
 
-func factorial([]int) int {}
+func factorial(num int) int {
+	if num == 0 {
+		return 1
+	}
+
+	return num * factorial(num-1)
+}
