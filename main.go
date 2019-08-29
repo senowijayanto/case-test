@@ -41,13 +41,17 @@ func main() {
 	fmt.Printf("Case 4: %s\n", timeConverter(5, 45))
 	fmt.Printf("Case 4: %s\n", timeConverter(5, 47))
 	fmt.Printf("Case 4: %s\n", timeConverter(5, 28))
+
+	// Case 5
+	arrList := []int{3, 3, 2, 1, 3}
+	fmt.Printf("Case 5: %d\n", arrayReducer(arrList))
 }
 
-func sumArray(num []int) int {
+func sumArray(numbers []int) int {
 	var sum int
 
-	for i := 0; i < len(num); i++ {
-		sum += num[i]
+	for _, number := range numbers {
+		sum += number
 	}
 	return sum
 }
@@ -133,4 +137,18 @@ func timeConverter(h, m int) string {
 		return fmt.Sprintf("%s minutes to %s", numbers[60-m], numbers[(h%12)+1])
 	}
 	return ""
+}
+
+func arrayReducer(arr []int) int {
+	var count int
+	// var G []int
+	for _, i := range arr {
+		for _, j := range arr {
+			if i == j {
+				count = count + 1
+			}
+		}
+		count = 0
+	}
+	return len(arr)
 }
