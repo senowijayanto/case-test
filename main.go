@@ -140,15 +140,28 @@ func timeConverter(h, m int) string {
 }
 
 func arrayReducer(arr []int) int {
-	var count int
-	// var G []int
-	for _, i := range arr {
-		for _, j := range arr {
-			if i == j {
-				count = count + 1
+	var maximum = func(array []int) int {
+		max := array[0]
+
+		for _, value := range array {
+			if value > max {
+				max = value
 			}
 		}
-		count = 0
+		return max
 	}
-	return len(arr)
+
+	obj := make([]int, len(arr))
+
+	for _, i := range arr {
+		if len(obj) > 0 {
+			obj[i]++
+		} else {
+			obj[i] = 1
+		}
+	}
+
+	objMax := maximum(obj)
+	result := len(arr) - objMax
+	return result
 }
